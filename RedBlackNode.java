@@ -16,6 +16,7 @@ public class RedBlackNode {
 
     Creates a RBnode with the input as the key value. Assume the input is an integer.
     Left and right children are both init to null and defult color for a new node is red
+    Parent node is init to null
     */
     RedBlackNode( int val )
     {

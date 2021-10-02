@@ -1,9 +1,24 @@
+//RedBlackTree class contains the procedures to create a RedBlackTree, add nodes into the tree, and delete nodes from the tree
+//  also contains the helper procedures of above functions
 public class RedBlackTree{
     
+    /*
+    RedBlackTree() -> NA
+        no parameter
+    Create a RedBlackTree object with a null root
+    */
     public RedBlackTree ( ) {
        this.root = null; 
     }
 
+    /*
+    leftRotate(RBTree T, RBnode x) -> NA
+        T: RBTree object specifying the tree function is modefiying
+        x: RBNode object specifying the location of left rotate
+
+    Moves node x down to the left. 
+    Details: x.right become x.p while x.right.left become x.right
+    */
     public void leftRotate (RedBlackTree T, RedBlackNode x){
         RedBlackNode y = x.right;
         x.right=y.left;
@@ -25,6 +40,14 @@ public class RedBlackTree{
         return;
     }
 
+    /*
+    rightRotate(RBTree T, RBnode y) -> NA
+        T: RBTree object specifying the tree function is modefiying
+        y: RBNode object specifying the location of right rotate
+
+    Moves node y down to the right. 
+    Details: y.left become y.p while y.left.right become y.left
+    */
     public void rightRotate (RedBlackTree T, RedBlackNode y){
         RedBlackNode x = y.right;
         y.left = x.right;
@@ -46,6 +69,11 @@ public class RedBlackTree{
         return;
     }
 
+    /*
+    insert(RBTree T, RBNode z) -> NA
+        T: RBTree object specifying the tree which is modefiying
+        z: RBNode object which will be inserted into the tree
+    */
     public void insert (RedBlackTree T, RedBlackNode z){
         y = null;
         x = T.root;
@@ -72,6 +100,9 @@ public class RedBlackTree{
         return;
     }
 
+    /*
+
+    */
     public void insertFixup(RedBlackTree T, RedBlackNode z){
         while ((z != T.root) && (z.pare.color)){
              
@@ -112,7 +143,6 @@ public class RedBlackTree{
         self.root.c = False
         #print("insertF, root now is: ", self.root.key)
         return
-
 
 
 
