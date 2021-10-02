@@ -19,9 +19,11 @@ public class RedBlackNode {
     */
     RedBlackNode( int val )
     {
-        key = val;
-        left = right = null;
-        color = False; // False is black, while True is red
+        this.key = val;
+        this.left = this.right = null;
+        this.color = False; // False is black, while True is red
+        this.p = null;
+        
     }
 
 }
