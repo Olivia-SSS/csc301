@@ -1,3 +1,5 @@
+import javax.lang.model.util.ElementScanner6;
+
 public class RedBlackTree{
     RedBlackNode root;
     public RedBlackTree ( ) {
@@ -253,10 +255,28 @@ public class RedBlackTree{
         return;
     }
 
-    
+    public RedBlackNode searchKeyHelper (RedBlackTree T, int key, RedBlackNode current){
+        if (current == null)
+            return False;
+        if (current.key == key)
+            return current;
+        else if (current.key > key)
+            return self.searchKeyHelper(key, current.left);
+        else    
+           return self.searchKeyHelper(key,current.right);      
+    }
 
+    public Boolean searchKey (RedBlackTree T, int key){
+        RedBlackNode current = T.root;
+        RedBlackNode temp = T.searchKeyHelper(key, current);
+        if (temp == False)
+            return temp;
+        else       
+            return True;
+    }
 
-
-
+    public void deleteKey(RedBlackTree T, int key){
+        return;
+    }
 
 }
