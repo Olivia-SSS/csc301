@@ -74,6 +74,9 @@ public class RedBlackTree{
     insert(RBTree T, RBNode z) -> NA
         T: RBTree object specifying the tree which is modefiying
         z: RBNode object which will be inserted into the tree
+
+    Inserts a node into the red black tree according to BST rules. 
+    Inserted node is automaticly set to red according to RBT rules.
     */
     public void insert (RedBlackTree T, RedBlackNode z){
         y = null;
@@ -102,7 +105,11 @@ public class RedBlackTree{
     }
 
     /*
+    insertFixup(RBTree T, RBNode z) -> NA
+        T: RBTree object specifying the tree which is modefiying
+        z: RBNode object which will be inserted into the tree
 
+    Helper function of insert(). fix the (unbalanced) RBTree from node z up to the root.
     */
     public void insertFixup(RedBlackTree T, RedBlackNode z){
         while ((z != T.root) && (z.p.color)){
@@ -153,6 +160,14 @@ public class RedBlackTree{
         }
     }
 
+    /*
+    transplant (RedBlackTree T, RedBlackNode u, RedBlackNode v) -> NA
+        T: RBTree object specifying the tree which is modefiying
+        u: RBNode object which is the original node
+        v: RBNode object which would be the node being transplanted to u's position
+    
+    Transplants node v and all its children to u's position in RBTree T. In other words, replace u with v. 
+    */
     public void transplant (RedBlackTree T, RedBlackNode u, RedBlackNode v){
         if (u.p == self.nil)
             self.root = v;
@@ -164,7 +179,14 @@ public class RedBlackTree{
         return;
     }
         
+    /*
+    treeMinimum (RedBlakcTree T, RedBlackNode x) -> RedBlackNode x
+        T: RBTree object specifying the tree function is modefiying
+        x: RBNode object specifying the location of the start of minimization
 
+    Minimize the node x in tree T by refering x.left to x untill x.left is a NIL node. 
+    Returns the finilized node x. 
+    */
     public RedBlackNode treeMinimum (RedBlakcTree T, RedBlackNode x){
         if (x == null)
            return x;
@@ -174,8 +196,17 @@ public class RedBlackTree{
         return x;
     }
    
+    /*
+    delete (RedBlakcTree T, RedBlackNode z) -> NA
+        T: RBTree object specifying the tree function is modefiying
+        z: RBNode object specifying the node that is going to be deleted
 
+    Delets a node from the red black tree according to BST rules. 
+    search the node first, if not find that terminates. if it exists, delete it. 
+    */
     public void delete (RedBlakcTree T, RedBlackNode z){
+
+        //check if the node is null or does not exist first. if so, break
         if (z == null)
            return;
         if (T.searchKey (z.key) == False)
@@ -216,7 +247,13 @@ public class RedBlackTree{
         return;
     }
 
+    /*
+    deleteFixup (RedBlackTree T, RedBlackNode x) -> NA
+        T: RBTree object specifying the tree which is modefiying
+        x: RBNode object which will be deleted from the tree
 
+    Helper function of delete(). fix the (unbalanced) RBTree from node x up to the root.
+    */
     public void deleteFixup (RedBlackTree T, RedBlackNode x){
         //print("inside deletefixup", type(x));
         while ((x != T.root) && (! x.color)){
