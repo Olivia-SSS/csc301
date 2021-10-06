@@ -345,7 +345,44 @@ public class RedBlackTree{
     }
 
     public void deleteKey(RedBlackTree T, int key){
+        RedBlackNode current = T.root;
+        RedBlackNode temp = T.searchKeyHelper(key, current);
+        if (temp == False){
+            
+        }
+        else       
+            T.delete(temp);
+
         return;
     }
+
+    public void print_tree1 (RedBlackNode node){
+        print_tree1_helper(node, 0);
+    }
+
+    public void print_tree1_helper (RedBlackNode node, int level){
+        if (node.key != "NIL") {
+            print_tree1(node.left, level+1);
+            System.out.println ("-" * 4 * level + "> " +
+                str(node.key) + ' ');
+            if (node.color == True)
+                System.out.println ("r");
+            else 
+                System.out.println ("b");
+            
+        print_tree1(node.right, level + 1);
+        }
+
+        else {
+            System.out.println ("-" * 4 * (level+1) + "> " + str(node.key) + " ");
+            if (node.color == True)
+            System.out.println ("r");
+            else 
+            System.out.println ("b");
+        }
+        
+    }
+
+
 
 }

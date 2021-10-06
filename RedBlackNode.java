@@ -16,15 +16,14 @@ public class RedBlackNode {
 
     Creates a RBnode with the input as the key value. Assume the input is an integer.
     Left and right children are both init to null and defult color for a new node is red
-    Parent node is init to null
     */
     RedBlackNode( int val )
     {
         this.key = val;
-        this.left = this.right = null;
+        this.left = null;
+        this.right = null;
         this.color = False; // False is black, while True is red
         this.p = null;
-        
     }
 
 }
