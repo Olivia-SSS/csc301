@@ -324,6 +324,16 @@ public class RedBlackTree{
         return;
     }
 
+    /*
+    searchKeyHelper (RedBlackTree T, int key, RedBlackNode current) -> False/RBNode
+        T: RBTree object specifying the tree which is modefiying
+        key: the key value that you want to search
+        current: the node you want to look at first with all its children
+    
+    This is a helper function for searchKey. It uses recursion, and the base cases are either
+    current node is null, means this key value does not exist and false would be returned, or 
+    current.key == key, which means we have the node. In this case the node is then returned. 
+    */
     public RedBlackNode searchKeyHelper (RedBlackTree T, int key, RedBlackNode current){
         if (current == null)
             return False;
@@ -335,6 +345,14 @@ public class RedBlackTree{
            return self.searchKeyHelper(key,current.right);      
     }
 
+    /*
+    searchKey (RedBlackTree T, int key) -> Boolean
+        T: RBTree object specifying the tree which is modefiying
+        key: the key value that you want to search
+    
+    This is the main function that could search if a key is in the tree T and returns the boolean value. 
+    It passes the parameters into the helper function for the main part. 
+    */
     public Boolean searchKey (RedBlackTree T, int key){
         RedBlackNode current = T.root;
         RedBlackNode temp = T.searchKeyHelper(key, current);
