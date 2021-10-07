@@ -57,7 +57,7 @@ public class RedBlackTreeTests {
             System.out.println((i+1) + " elements added, value =" + ranNum);
         }
 
-        System.out.println(print("Tree init done"));
+        System.out.println ("Tree init done");
 
         System.out.println(T.searchKey(10));
         System.out.println(T.searchKey(11));
