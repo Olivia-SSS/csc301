@@ -81,10 +81,10 @@ public class RedBlackTree{
     Inserted node is automaticly set to red according to RBT rules.
     */
     public void insert (RedBlackTree T, RedBlackNode z){
-        y = null;
-        x = T.root;
+        RedBlackNode y = null;
+        RedBlackNode x = T.root;
         while (x != null){
-            y=x;
+            y = x;
         }
         if (z.key < x.key)
             x = x.left;
@@ -100,7 +100,7 @@ public class RedBlackTree{
             
         z.left = null;
         z.right = null;
-        z.color = True;
+        z.color = true;
             
         T.insertFixup(z);
         return;
@@ -119,9 +119,9 @@ public class RedBlackTree{
             {   //uncle
                 y=z.p.p.right;
                 if (y.color){
-                    z.p.color = False;
-                    y.color = False;
-                    z.p.p.color = True;
+                    z.p.color = false;
+                    y.color = false;
+                    z.p.p.color = true;
                     z = z.p.p;
                 }
                 else {
@@ -129,8 +129,8 @@ public class RedBlackTree{
                         z = z.p;
                         T.leftRotate(z);
                     }
-                    z.p.color = False;
-                    z.p.p.color = True;
+                    z.p.color = false;
+                    z.p.p.color = true;
                     T.rightRotate(z.p.p);
                 }
             }
@@ -140,9 +140,9 @@ public class RedBlackTree{
                 y=z.p.p.left;
                 if (y.color)
                 {
-                    z.p.color = False;
-                    y.color = False;
-                    z.p.p.color = True;
+                    z.p.color = false;
+                    y.color = false;
+                    z.p.p.color = true;
                     z=z.p.p;
                 }
                 else{
@@ -150,13 +150,13 @@ public class RedBlackTree{
                         z = z.p;
                         T.rightRotate(z);
                     }
-                z.p.color = False;
-                z.p.p.color = True;
+                z.p.color = false;
+                z.p.p.color = true;
                 T.leftRotate(z.p.p);
                 }
                     
             }
-            T.root.color = False;
+            T.root.color = false;
             //print("insertF, root now is: ", self.root.key);
             return;
         }
@@ -211,9 +211,9 @@ public class RedBlackTree{
         //check if the node is null or does not exist first. if so, break
         if (z == null)
            return;
-        if (T.searchKey (z.key) == False)
+        if (T.searchKey (z.key) == false)
            return;
-        y = z;
+        RedBlackNode y = z;
         Boolean yoc = y.color;
         if (z.left == null){
             x = z.right;
@@ -263,26 +263,26 @@ public class RedBlackTree{
                 //print("1st branch");
                 RedBlackNode w = x.p.right;
                 if (w.color){
-                    w.color = False;
-                    x.p.color = True;
+                    w.color = false;
+                    x.p.color = true;
                     T.leftRotate(x.p);
                     w = x.p.right;
                 }
                 if ((! w.left.color) && (! w.right.color)){
-                    w.color = True;
+                    w.color = true;
                     x = x.p;
                 }
                     
                 else{
                     if (! w.right.color){
-                        w.left.color = False;
-                        w.color = True;
+                        w.left.color = false;
+                        w.color = true;
                         T.rightRotate(w);
                         w = x.p.right;
                     }
                     w.color = x.p.color;
-                    x.p.color = False;
-                    w.right.color = False;
+                    x.p.color = false;
+                    w.right.color = false;
                     T.leftRotate(x.p);
                     x = T.root;
                 }
@@ -293,26 +293,26 @@ public class RedBlackTree{
                 //print("2nd branch");
                 RedBlackNode w = x.p.left;
                 if (w.color){
-                    w.color = False;
-                    x.p.color = True;
+                    w.color = false;
+                    x.p.color = true;
                     T.rightRotate(x.p);
                     w = x.p.left;
                 }
                 if ((! w.right.c) && (! w.left.c)){
-                    w.color = True;
+                    w.color = true;
                     x = x.p;
                 }
                 else{
                     if (! w.left.color){
-                        w.right.color = False;
-                        w.c = True;
+                        w.right.color = false;
+                        w.c = true;
                         self.leftRotate(w);
                         w = x.p.left;
                     }
                    
                     w.color = x.p.color;
-                    x.p.color = False;
-                    w.left.c = False;
+                    x.p.color = false;
+                    w.left.c = false;
                     T.rightRotate(x.p);
                     x = T.root;
                 }
@@ -320,7 +320,7 @@ public class RedBlackTree{
                 
              
         }
-        x.color = False;
+        x.color = false;
         return;
     }
 
@@ -336,7 +336,7 @@ public class RedBlackTree{
     */
     public RedBlackNode searchKeyHelper (RedBlackTree T, int key, RedBlackNode current){
         if (current == null)
-            return False;
+            return false;
         if (current.key == key)
             return current;
         else if (current.key > key)
@@ -356,16 +356,16 @@ public class RedBlackTree{
     public Boolean searchKey (RedBlackTree T, int key){
         RedBlackNode current = T.root;
         RedBlackNode temp = T.searchKeyHelper(key, current);
-        if (temp == False)
+        if (temp == false)
             return temp;
         else       
-            return True;
+            return true;
     }
 
     public void deleteKey(RedBlackTree T, int key){
         RedBlackNode current = T.root;
         RedBlackNode temp = T.searchKeyHelper(key, current);
-        if (temp == False){
+        if (temp == false){
             
         }
         else       
@@ -374,7 +374,7 @@ public class RedBlackTree{
         return;
     }
 
-    public void print_tree1 (RedBlackNode node){
+    /*public void print_tree1 (RedBlackNode node){
         print_tree1_helper(node, 0);
     }
 
@@ -383,23 +383,23 @@ public class RedBlackTree{
             print_tree1(node.left, level+1);
             System.out.println ("-" * 4 * level + "> " +
                 str(node.key) + ' ');
-            if (node.color == True)
+            if (node.color == true)
                 System.out.println ("r");
             else 
                 System.out.println ("b");
             
-        print_tree1(node.right, level + 1);
+        print_tree1_helper(node.right, level + 1);
         }
 
         else {
             System.out.println ("-" * 4 * (level+1) + "> " + str(node.key) + " ");
-            if (node.color == True)
+            if (node.color == true)
             System.out.println ("r");
             else 
             System.out.println ("b");
         }
         
-    }
+    }*/
 
 
 
