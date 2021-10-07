@@ -374,14 +374,17 @@ public class RedBlackTree{
         return;
     }
 
-    /*public void print_tree1 (RedBlackNode node){
+    public void print_tree1 (RedBlackNode node){
         print_tree1_helper(node, 0);
     }
 
     public void print_tree1_helper (RedBlackNode node, int level){
         if (node.key != "NIL") {
             print_tree1(node.left, level+1);
-            System.out.println ("-" * 4 * level + "> " +
+            for (int i = 0 ; i < 4 * level; i++){
+                System.out.println ("-");
+            }
+            System.out.println ( "> " +
                 str(node.key) + ' ');
             if (node.color == true)
                 System.out.println ("r");
@@ -392,14 +395,17 @@ public class RedBlackTree{
         }
 
         else {
-            System.out.println ("-" * 4 * (level+1) + "> " + str(node.key) + " ");
+             for (int i = 0 ; i < 4 * level+1; i++){
+                System.out.println ("-");
+            }
+            System.out.println ("> " + str(node.key) + " ");
             if (node.color == true)
             System.out.println ("r");
             else 
             System.out.println ("b");
         }
         
-    }*/
+    }
 
 
 
