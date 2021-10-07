@@ -22,7 +22,7 @@ public class RedBlackNode {
         this.key = val;
         this.left = null;
         this.right = null;
-        this.color = False; // False is black, while True is red
+        this.color = false; // False is black, while True is red
         this.p = null;
     }
 
