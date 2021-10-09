@@ -2,6 +2,36 @@ import java.util.Random;
 
 public class RedBlackTreeTests {
 
+    public Boolean checkChild(RedBlackNode node){
+        return ((node.left.color == false) && (node.right.color == false));
+    }
+    
+public prop4helper(RedBlackNode node){
+    if (node.key == "NIL")
+        return true;
+    if (node.color == true){
+        boolean rst = checkChild(node);
+    }
+    if (!rst)
+        return false;
+    
+    boolean x = prop4helper(node.left);
+    boolean y = prop4helper(node.right);
+    return (x && y)  ; 
+}
+   
+
+public void prop4(RedBlackTree T){
+    boolean rst = prop4helper(T.root);
+    if (rst)
+        System.out.println ("Property 4 holds");
+    else 
+        System.out.println ("Property 4 does not hold");
+
+    return;
+}
+   
+
     public void insert_test (){
         RedBlackTree T = new RedBlackTree();
         int numNode = 10;
@@ -76,7 +106,6 @@ public class RedBlackTreeTests {
         else 
              System.out.println("The root is not black, this tree doesn't satisfy property 2");
 
-        //check property 4
 
     }
 
