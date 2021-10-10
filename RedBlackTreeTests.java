@@ -1,35 +1,39 @@
 import java.util.Random;
 
+import RBN.RedBlackNode;
+import RBN.RedBlackTree;
+import java.util.Hashtable;
+
 public class RedBlackTreeTests {
 
     public Boolean checkChild(RedBlackNode node){
         return ((node.left.color == false) && (node.right.color == false));
     }
     
-public prop4helper(RedBlackNode node){
-    if (node.key == "NIL")
-        return true;
-    if (node.color == true){
-        boolean rst = checkChild(node);
+    public Boolean prop4helper(RedBlackNode node){
+        if (node == null)
+            return true;
+        if (node.color == true){
+            boolean rst = checkChild(node);
+            if (!rst)
+                return false;
+        }
+        
+        boolean x = prop4helper(node.left);
+        boolean y = prop4helper(node.right);
+        return (x && y)  ; 
     }
-    if (!rst)
-        return false;
     
-    boolean x = prop4helper(node.left);
-    boolean y = prop4helper(node.right);
-    return (x && y)  ; 
-}
-   
 
-public void prop4(RedBlackTree T){
-    boolean rst = prop4helper(T.root);
-    if (rst)
-        System.out.println ("Property 4 holds");
-    else 
-        System.out.println ("Property 4 does not hold");
+    public void prop4(RedBlackTree T){
+        boolean rst = prop4helper(T.root);
+        if (rst)
+            System.out.println ("Property 4 holds");
+        else 
+            System.out.println ("Property 4 does not hold");
 
-    return;
-}
+        return;
+    }
    
 
     public void insert_test (){
@@ -39,13 +43,17 @@ public void prop4(RedBlackTree T){
         for  (int i = 0; i < numNode; i++){
             Random rand = new Random();
             int ranNum = rand.nextInt(100);
-            nodes.put("Node" + i, RedBlackNode(ranNum));
-            T.insert(nodes.get("Node" + i));
+            nodes.put("Node" + i, RedBlackNode.RedBlackNode(ranNum));
+            T.insert(T, nodes.get("Node" + i));
             System.out.println((i+1) + " elements added, value =" + ranNum);
         }
         print_tree1(T.root);
         
    
+    }
+
+    private RedBlackNode RedBlackNode(int ranNum) {
+        return null;
     }
 
     public void delete_test (){
@@ -57,17 +65,17 @@ public void prop4(RedBlackTree T){
             Random rand = new Random();
             int ranNum = rand.nextInt(100);
             nodes.put("Node" + i, RedBlackNode(ranNum));
-            T.insert(nodes.get("Node" + i));
+            T.insert(T, nodes.get("Node" + i));
             System.out.println((i+1) + " elements added, value =" + ranNum);
         }
 
         for (int j = 0; j < 15; j++){
-            T.delete(T.root);
+            T.delete(T, T.root);
             print_tree1(T.root);
             print("");
 
             print("delete non-existent node");
-            T.delete(nodes["Node3"]);
+            T.delete(nodes.get("Node3"));
             rbt.print_tree1(T.root);
 
         }
@@ -83,20 +91,20 @@ public void prop4(RedBlackTree T){
             Random rand = new Random();
             int ranNum = rand.nextInt(100);
             nodes.put("Node" + i, RedBlackNode(ranNum));
-            T.insert(nodes.get("Node" + i));
+            T.insert(T, nodes.get("Node" + i));
             System.out.println((i+1) + " elements added, value =" + ranNum);
         }
 
         System.out.println ("Tree init done");
 
-        System.out.println(T.searchKey(10));
-        System.out.println(T.searchKey(11));
-        System.out.println(T.searchKey(45));
-        System.out.println(T.searchKey(46));
-        T.delete(nodes["Node7"]);
-        T.delete(nodes["Node0"]);
-        System.out.println(T.searchKey(10));
-        System.out.println(T.searchKey(45));
+        System.out.println(T.searchKey(T,10));
+        System.out.println(T.searchKey(T,11));
+        System.out.println(T.searchKey(T,45));
+        System.out.println(T.searchKey(T,46));
+        T.delete(T, nodes.get("Node7"));
+        T.delete(T, nodes.get("Node0"));
+        System.out.println(T.searchKey(T,10));
+        System.out.println(T.searchKey(T,45));
     }
   
     public void prop_test (RedBlackTree T){
